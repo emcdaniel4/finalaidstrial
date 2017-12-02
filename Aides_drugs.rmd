@@ -1,0 +1,158 @@
+---
+title: "Aides Tests"
+author: "Eric McDaniel"
+date: "Dec 6, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(tigerstats)
+require(dplyr)
+Scarolina<-read.csv(file="south_carolina_aides.csv",header=TRUE)
+korea<-read.csv(file="korea_aides.csv",header=TRUE)
+cenAfrica<-read.csv(file="central_africa_aides.csv",header=TRUE)
+```
+
+#Instructions
+
+Three new preventative aides drugs were tested in clinical trials in 2015. The trial designs were modeled after the famous RV_144 Aides Trials in Tailand in 2009.  Analyze and report on the apparent effectiveness of the three different drugs. Does sex of the participant seem to be a factor for any of the drugs?
+
+#Methods
+
+# RESULTS
+
+#Graphical Results/South Carolina
+##Male
+```{r}
+ScarolinaM <- filter(Scarolina, sex== "M")
+barchartGC(~infected + group, data=ScarolinaM, type="percent", main="South Carolina Male")
+```
+
+##Female
+```{r}
+ScarolinaF <- filter(Scarolina,sex=="F")
+barchartGC(~infected + group, data=ScarolinaF, type="percent", main="South Carolina Female")
+```
+#Both
+
+```{r}
+barchartGC(~infected+group,data=Scarolina, type ="percent", main= "South Carolina Male and Females")
+```
+
+#Graphical Results/Central Africa
+##Male
+```{r}
+cenAfricaM <- filter(cenAfrica,sex=="M") 
+barchartGC(~infected + group, data=cenAfricaM, type="percent", main="Central Africa Male")
+```
+
+##Female
+```{r}
+cenAfricaF <- filter(cenAfrica,sex=="F") 
+barchartGC(~infected + group, data=cenAfricaF, type="percent", main="Central Africa Female")
+```
+##Both
+```{r}
+barchartGC(~infected+group,data=cenAfrica, type ="percent", main= "Central Africa Male and Females")
+```
+
+
+#Graphical Results/Korea
+##Male
+```{r}
+koreaM <- filter(korea,sex=="M")
+barchartGC(~infected + group, data=koreaM, type="percent",  main="Korea Male")
+```
+
+##Female
+```{r}
+koreaF <- filter(korea,sex=="F")
+barchartGC(~infected + group, data=koreaF, type="percent", main="Korea Female")
+```
+
+##Both
+```{r}
+barchartGC(~infected+group,data=korea, type ="percent", main= "Korea Male and Females")
+```
+
+#Numerical Results/South Carolina
+##Male
+```{r}
+ScarolinaM_table <- xtabs(~infected + group, data = ScarolinaM)
+rowPerc(ScarolinaM_table)
+```
+##Female
+```{r}
+ScarolinaF_table <- xtabs(~infected + group, data = ScarolinaF)
+rowPerc(ScarolinaF_table)
+```
+##Both
+```{r}
+Scarolina_table <- xtabs(~infected + group, data = Scarolina)
+rowPerc(Scarolina_table)
+```
+
+#Numerical Results/Central Africa
+##Male
+```{r}
+cenAfricaM_table <- xtabs(~infected + group, data = cenAfricaM)
+rowPerc(cenAfricaM_table)
+```
+
+##Female
+```{r}
+cenAfricaF_table <- xtabs(~infected + group, data = cenAfricaF)
+rowPerc(cenAfricaF_table)
+```
+
+##Both
+```{r}
+cenAfrica_table <- xtabs(~infected + group, data = cenAfrica)
+rowPerc(cenAfrica_table)
+```
+
+#Numerical Results/Korea
+##Male
+```{r}
+koreaM_table <- xtabs(~infected + group, data = koreaM)
+rowPerc(koreaM_table)
+```
+
+##Female
+```{r}
+koreaF_table <- xtabs(~infected + group, data = koreaF)
+rowPerc(koreaF_table)
+```
+#Both
+```{r}
+korea_table <- xtabs(~infected + group, data= korea)
+rowPerc(korea_table)
+```
+
+
+
+#Inferential Results/South Carolina
+#Male
+```{r}
+chisqtestGC(ScarolinaM_table)
+```
+
+#Female
+
+#Inferential Results/Central Africa
+#Male
+#Female
+
+
+#Inferential Results/Korea
+#Male
+#Female
+
+
+# Conclusion
+
+
+
+
+
