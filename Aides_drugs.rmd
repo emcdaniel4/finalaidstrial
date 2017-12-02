@@ -137,17 +137,48 @@ rowPerc(korea_table)
 ```{r}
 chisqtestGC(ScarolinaM_table)
 ```
-
 #Female
+```{r}
+chisqtestGC(ScarolinaF_table)
+```
+#Both
+```{r}
+chisqtestGC(Scarolina_table)
+```
+
 
 #Inferential Results/Central Africa
 #Male
+```{r}
+chisqtestGC(cenAfricaM_table)
+```
+
 #Female
+```{r}
+chisqtestGC(cenAfricaF_table)
+```
+
+#Both
+```{r}
+chisqtestGC(cenAfrica_table)
+```
 
 
 #Inferential Results/Korea
 #Male
+```{r}
+chisqtestGC(koreaM_table)
+```
+
 #Female
+```{r}
+chisqtestGC(koreaF_table)
+```
+
+#Both
+```{r}
+chisqtestGC(korea_table)
+```
 
 
 # Conclusion
